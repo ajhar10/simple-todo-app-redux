@@ -42,6 +42,7 @@ export default function TodoList() {
                 .filter(filterByStatus)
                 .filter(filterByColors)
                 .map((todo) => (
+                    !todo.completed &&
                     <Todo todo={todo} key={todo.id} />
                 ))}
         </div>
