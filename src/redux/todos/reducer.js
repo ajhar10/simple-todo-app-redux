@@ -4,6 +4,7 @@ import {
     CLEARCOMPLETED,
     COLORSELECTED,
     DELETED,
+    EDIT,
     LOADED,
     TOGGLED,
 } from "./actionTypes";
@@ -28,6 +29,16 @@ const reducer = (state = initialState, action) => {
                     completed: false,
                 },
             ];
+        
+        case EDIT:
+                // const {editId, todoText} = action.payload
+                const upadatedTodos = state.map((todo) => {
+                    if (todo.id === action.payload.id) {
+                        return { ...todo, text: action.payload.text };
+                    }
+                    return todo;
+                });
+                return upadatedTodos;
 
         case TOGGLED:
             return state.map((todo) => {
